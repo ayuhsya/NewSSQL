@@ -38,11 +38,23 @@ The project is based on Maven.
 ### Config File:
 A config file is required by SuperSQL. Create a config.ssql file in the home directory and add the lines:
 
-	driver=<dbms>
-	db=<path to database>
+	driver=<postgres/sqlite3/mysql/db2>
+	db=<path_to_database>
+	host=<host_name>
+	user=<user_name>
 
 ## Sample Query
-SSQL queries begin with the keyword GENERATE followed by a TFE and the regular FROM and WHERE clauses as required by SQL. For example:
+SSQL queries begin with the keyword GENERATE followed by a TFE and the regular FROM and WHERE clauses as required by SQL. For example, consider a table item with following schema:
+	CREATE TABLE item (
+		id	int,
+		name	varchar,
+		dept	int,
+		price	int,
+		qoh	int,
+		supplier	int
+	);
+
+The SSQL query:
 
 	GENERATE HTML
 	[i.name , i.price]!

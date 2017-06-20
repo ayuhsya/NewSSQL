@@ -2,5 +2,5 @@ GENERATE HTML
 [i.name , i.price]!
 FROM item i
 WHERE i.supplier =
-	(SELECT s.id FROM supplier s
-		where s.name = 'リーバンアトラス')
+(SELECT s.id FROM supplier s
+where s.name = 'リーバンアトラス')
