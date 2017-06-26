@@ -45,23 +45,16 @@ A config file is required by SuperSQL. Create a config.ssql file in the home dir
 
 ## Sample Query
 SSQL queries begin with the keyword GENERATE followed by a TFE and the regular FROM and WHERE clauses as required by SQL. For example, consider a table item with following schema:
-    CREATE TABLE item (
-        id int,
-        name varchar,
-        dept int,
-        price int,
-        qoh int,
-        supplier int
-    );
+    
 
 The SSQL query:
 
 	GENERATE HTML
-	[i.name , i.price]!
-	FROM item i
-	WHERE i.supplier =
-	(SELECT s.id FROM supplier s
-	where s.name = 'リーバンアトラス')
+	[ s.city@{align=“center”, bgcolor=“navy”, color=“white”}!
+   	[d.floor, [d.name, [i.name]! ]! ]!
+	],@{bgcolor=“cyan”, color=“blue”}
+	FROM shop s, dept d, item i
+	WHERE i.dept=d.id AND d.shop=s.id
 		
 creates a html document out of the results from the SQL query.
 
